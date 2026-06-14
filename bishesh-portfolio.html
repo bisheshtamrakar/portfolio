@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bishesh Tamrakar — Mane House</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F8F5F0;
+    --warm-white: #FDFCFA;
+    --clay: #8B6E5A;
+    --clay-light: #C4A98E;
+    --clay-dark: #5C4435;
+    --copper: #B87333;
+    --copper-light: #E8C99A;
+    --ink: #1E1916;
+    --ink-soft: #4A3D35;
+    --ink-muted: #8A7B72;
+    --border: rgba(139, 110, 90, 0.18);
+    --border-strong: rgba(139, 110, 90, 0.35);
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(253, 252, 250, 0.93);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .nav-logo span {
+    font-size: 10px;
+    font-family: var(--sans);
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--clay); }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--ink);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 5% 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--clay);
+    flex-shrink: 0;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(46px, 5.5vw, 78px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--clay);
+  }
+
+  .hero-role {
+    font-family: var(--serif);
+    font-size: clamp(17px, 2.2vw, 24px);
+    font-weight: 300;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    font-style: italic;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-est {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cream);
+    border: 0.5px solid var(--border-strong);
+    padding: 8px 16px;
+    margin-bottom: 28px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .hero-est strong {
+    color: var(--copper);
+    font-weight: 500;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.85;
+    max-width: 420px;
+    margin-bottom: 40px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 13px 32px;
+    background: var(--ink);
+    color: var(--warm-white);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--clay-dark); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 13px 32px;
+    border: 1px solid var(--border-strong);
+    color: var(--ink-soft);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--clay); color: var(--clay); }
+
+  /* hero image */
+  .hero-image { position: relative; }
+
+  .hero-img-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--cream);
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+  .ph {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--ink-muted);
+    font-size: 12px;
+    background: var(--cream);
+    letter-spacing: 0.03em;
+  }
+
+  .ph svg { width: 40px; height: 40px; opacity: 0.28; }
+
+  .hero-tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--copper);
+    color: white;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.8vw, 50px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--clay); }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--copper-light);
+    margin-bottom: 48px;
+  }
+
+  /* LEGACY BANNER */
+  .legacy-banner {
+    background: var(--ink);
+    padding: 64px 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--ink);
+  }
+
+  .legacy-cell {
+    background: var(--ink);
+    padding: 40px 32px;
+    text-align: center;
+    border-right: 0.5px solid rgba(255,255,255,0.1);
+  }
+
+  .legacy-cell:last-child { border-right: none; }
+
+  .legacy-num {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--copper-light);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .legacy-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ABOUT */
+  #about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    margin-bottom: 22px;
+  }
+
+  /* FAMILY LEGACY PHOTOS */
+  .family-photos {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .family-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 20px;
+  }
+
+  .family-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .family-card {
+    position: relative;
+  }
+
+  .family-img-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--warm-white);
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .family-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+  .family-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .family-role {
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .about-image-col {}
+
+  .about-img-frame {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--warm-white);
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .about-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+  .img-caption {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  /* SKILLS */
+  #skills {}
+
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .skills-intro-text {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.85;
+    margin-bottom: 40px;
+  }
+
+  /* Traditional craft list */
+  .craft-list { list-style: none; }
+
+  .craft-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .craft-item:first-child { border-top: 0.5px solid var(--border); }
+
+  .craft-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--copper-light);
+    font-style: italic;
+    min-width: 22px;
+    padding-top: 2px;
+  }
+
+  .craft-name { font-size: 15px; color: var(--ink-soft); flex: 1; }
+  .craft-name strong { display: block; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+
+  /* Modern tools column */
+  .modern-col {}
+
+  .modern-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .modern-badge {
+    background: var(--copper);
+    color: white;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+  }
+
+  .modern-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+
+  .modern-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .tool-card {
+    border: 0.5px solid var(--border);
+    padding: 20px 14px;
+    text-align: center;
+    background: var(--cream);
+  }
+
+  .tool-icon {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tool-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+    margin-bottom: 3px;
+  }
+
+  .tool-use {
+    font-size: 11px;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  .bridge-quote {
+    padding: 20px 24px;
+    border-left: 2px solid var(--copper);
+    background: var(--cream);
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* GALLERY */
+  #projects { background: var(--cream); }
+
+  .gallery-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .gallery-note {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-style: italic;
+    padding-bottom: 4px;
+    text-align: right;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--warm-white);
+    border: 0.5px solid var(--border);
+    cursor: pointer;
+  }
+
+  .gallery-item.featured { grid-column: span 2; }
+
+  .gallery-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item.featured .gallery-img { aspect-ratio: 16/9; }
+
+  .gallery-item:hover .gallery-img { transform: scale(1.04); }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30,25,22,0);
+    transition: background 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+  }
+
+  .gallery-item:hover .gallery-overlay { background: rgba(30,25,22,0.5); }
+
+  .gallery-label {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s;
+  }
+
+  .gallery-item:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+  .gph {
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    background: var(--cream);
+    letter-spacing: 0.04em;
+  }
+
+  .gallery-item.featured .gph { aspect-ratio: 16/9; }
+  .gph svg { width: 28px; height: 28px; opacity: 0.28; }
+
+  .gallery-hint {
+    margin-top: 20px;
+    padding: 18px 24px;
+    border: 1px dashed var(--clay-light);
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+
+  /* CONTACT */
+  #contact {}
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-text {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.85;
+    margin-bottom: 32px;
+  }
+
+  .contact-info-list { list-style: none; }
+
+  .contact-info-item {
+    display: flex;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 0.5px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .contact-info-item:first-child { border-top: 0.5px solid var(--border); }
+
+  .cil {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay);
+    min-width: 80px;
+    padding-top: 2px;
+  }
+
+  .civ { font-size: 15px; color: var(--ink-soft); }
+
+  .civ a { color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+  .civ a:hover { color: var(--clay); }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 0.5px solid var(--border-strong);
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus { border-color: var(--copper); }
+
+  .form-textarea { min-height: 120px; resize: vertical; }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--clay);
+    color: white;
+    border: none;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 0;
+  }
+
+  .form-submit:hover { background: var(--clay-dark); }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 36px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .footer-brand-sub {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .footer-copy { font-size: 12px; color: var(--ink-muted); }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: var(--warm-white);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 300;
+    color: var(--ink);
+    text-decoration: none;
+    font-style: italic;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover { color: var(--clay); }
+
+  .mobile-close {
+    position: absolute;
+    top: 20px;
+    right: 5%;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--ink-muted);
+    line-height: 1;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; min-height: unset; }
+    .hero-image { order: -1; }
+    .hero-img-frame { max-width: 380px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .skills-layout { grid-template-columns: 1fr; gap: 56px; }
+    .legacy-banner { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.featured { grid-column: span 2; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 72px 5%; }
+    .legacy-banner { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item.featured { grid-column: span 1; }
+    .tool-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .family-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close">×</button>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#skills" onclick="closeMobileMenu()">Craft</a>
+  <a href="#projects" onclick="closeMobileMenu()">Gallery</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    Mane House
+    <span>Est. 1999 · Patan, Nepal</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Craft</a></li>
+    <li><a href="#projects">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Third-generation Repousé artisan · Patan</p>
+    <h1 class="hero-name">Bishesh<br><em>Tamrakar</em></h1>
+    <p class="hero-role">Handicraft artist & owner of Mane House</p>
+    <div class="hero-est">
+      <strong>Registered 1999</strong> &nbsp;·&nbsp; A family tradition since my grandfather's hands first met copper
+    </div>
+    <p class="hero-desc">
+      The Tamrakar name has shaped copper and brass in Patan for three generations. Today, I carry that heritage forward through Mane House — blending ancestral repousé technique with the precision of modern design tools.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View gallery</a>
+      <a href="#contact" class="btn-outline">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-img-frame">
+      <!-- Your portrait: <img src="bishesh.jpg" alt="Bishesh Tamrakar"> -->
+      <div class="ph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Your portrait photo here
+      </div>
+    </div>
+    <div class="hero-tag">Copper &amp; Brass Repousé</div>
+  </div>
+</section>
+
+<!-- LEGACY STATS BANNER -->
+<div class="legacy-banner">
+  <div class="legacy-cell">
+    <div class="legacy-num">3</div>
+    <div class="legacy-label">Generations of artisans</div>
+  </div>
+  <div class="legacy-cell">
+    <div class="legacy-num">1999</div>
+    <div class="legacy-label">Company registered</div>
+  </div>
+  <div class="legacy-cell">
+    <div class="legacy-num">25+</div>
+    <div class="legacy-label">Years in business</div>
+  </div>
+  <div class="legacy-cell">
+    <div class="legacy-num">100%</div>
+    <div class="legacy-label">Handmade in Patan</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">Our story</p>
+      <h2 class="section-title">A craft carried through<br><em>three generations</em></h2>
+      <div class="divider"></div>
+      <div class="about-text">
+        <p>
+          Repousé — the ancient art of shaping metal from behind with hammer and punch — has been the heartbeat of my family for three generations. My grandfather first pressed copper into form in the narrow lanes of Patan, then my father refined the art and formalised the business. In 1999, Mane House was officially registered, giving our ancestral work a name the world could find.
+        </p>
+        <p>
+          I grew up watching hands move over metal with a patience and precision that no machine can replicate. Every ridge hammered, every motif traced, every surface burnished — each one is a conversation between the maker and the material. I have inherited both the craft and the responsibility to keep it alive.
+        </p>
+        <p>
+          Today, I am also bringing new tools to an old tradition. Digital design through Canva, Adobe Illustrator, and AutoCAD allows us to plan intricate patterns with precision before a single hammer falls — expanding what is possible while staying true to what is timeless.
+        </p>
+      </div>
+
+      <!-- FAMILY PHOTOS -->
+      <div class="family-photos">
+        <p class="family-label">The family behind the craft</p>
+        <div class="family-grid">
+          <div class="family-card">
+            <div class="family-img-frame">
+              <!-- Grandfather photo: <img src="grandfather.jpg" alt="Grandfather Tamrakar"> -->
+              <div class="ph">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Grandfather's photo
+              </div>
+            </div>
+            <div class="family-name">Grandfather Tamrakar</div>
+            <div class="family-role">Founder · The first hands</div>
+          </div>
+          <div class="family-card">
+            <div class="family-img-frame">
+              <!-- Father photo: <img src="father.jpg" alt="Father Tamrakar"> -->
+              <div class="ph">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Father's photo
+              </div>
+            </div>
+            <div class="family-name">Father Tamrakar</div>
+            <div class="family-role">Second generation · Mane House 1999</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-image-col">
+      <div class="about-img-frame">
+        <!-- Workshop photo: <img src="workshop.jpg" alt="Mane House workshop"> -->
+        <div class="ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Workshop or craft process photo
+        </div>
+      </div>
+      <p class="img-caption">Mane House workshop · Patan, Lalitpur</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-layout">
+
+    <!-- Traditional craft -->
+    <div>
+      <p class="section-label">Traditional craft</p>
+      <h2 class="section-title">Ancestral skills,<br><em>living techniques</em></h2>
+      <div class="divider"></div>
+      <p class="skills-intro-text">
+        Repousé is our foundation — but the Tamrakar workshop has always offered a full range of Newar metalcraft disciplines, each practiced with tools and methods passed down through the family.
+      </p>
+      <ul class="craft-list">
+        <li class="craft-item">
+          <span class="craft-num">i.</span>
+          <div class="craft-name">
+            <strong>Repousé &amp; Chasing — Copper &amp; Brass</strong>
+            Our core art. Metal is shaped from the reverse using punches and hammers, building three-dimensional relief images of deities, mandalas, and traditional motifs. Each piece can take days to complete.
+          </div>
+        </li>
+        <li class="craft-item">
+          <span class="craft-num">ii.</span>
+          <div class="craft-name">
+            <strong>Ritual &amp; Temple Metalwork</strong>
+            Custom-crafted offering vessels, incense burners, butter lamps, and temple ornaments for Buddhist and Hindu shrines — made to order using traditional measurements and iconographic rules.
+          </div>
+        </li>
+        <li class="craft-item">
+          <span class="craft-num">iii.</span>
+          <div class="craft-name">
+            <strong>Decorative Panels &amp; Wall Art</strong>
+            Large-format copper panels featuring Patan's iconic temple motifs, peacock designs, and narrative scenes — for homes, hotels, and collectors worldwide.
+          </div>
+        </li>
+        <li class="craft-item">
+          <span class="craft-num">iv.</span>
+          <div class="craft-name">
+            <strong>Custom &amp; Bespoke Commissions</strong>
+            Bespoke work designed to a client's specification — portraits, architectural ornaments, corporate gifts, and commemorative pieces crafted entirely by hand.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Modern design tools -->
+    <div class="modern-col">
+      <p class="section-label">Modern approach</p>
+      <h2 class="section-title">Where tradition<br>meets <em>digital design</em></h2>
+      <div class="divider"></div>
+
+      <p class="modern-desc">
+        As the third generation of our family in this craft, I've introduced digital design into our process — not to replace the hand, but to give it better plans to follow. Complex patterns are drawn digitally before any metal is touched, improving accuracy and opening up design possibilities that were difficult to achieve freehand.
+      </p>
+
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-icon">
+            <!-- Canva icon approximation -->
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="#8B5CF6" opacity="0.12"/>
+              <text x="16" y="21" text-anchor="middle" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#8B5CF6">C</text>
+            </svg>
+          </div>
+          <div class="tool-name">Canva</div>
+          <div class="tool-use">Marketing, catalogues &amp; social content</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="#FF7C00" opacity="0.12"/>
+              <text x="16" y="21" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#FF7C00">Ai</text>
+            </svg>
+          </div>
+          <div class="tool-name">Illustrator</div>
+          <div class="tool-use">Pattern design &amp; motif layout</div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="#B87333" opacity="0.14"/>
+              <text x="16" y="21" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#B87333">CAD</text>
+            </svg>
+          </div>
+          <div class="tool-name">AutoCAD</div>
+          <div class="tool-use">Technical drawings &amp; precise measurements</div>
+        </div>
+      </div>
+
+      <div class="bridge-quote">
+        "My grandfather drew patterns from memory. My father traced them by hand. I design them in Illustrator — then we both pick up the hammer."
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="projects">
+  <div class="gallery-header">
+    <div>
+      <p class="section-label">Gallery</p>
+      <h2 class="section-title">Work from<br><em>Mane House</em></h2>
+      <div class="divider" style="margin-bottom:0"></div>
+    </div>
+    <p class="gallery-note">Add your own photos<br>by replacing placeholders</p>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item featured">
+      <!-- <img class="gallery-img" src="featured.jpg" alt="Featured repousé work"> -->
+      <div class="gph" style="aspect-ratio:16/9">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Featured piece — your best repousé work
+      </div>
+      <div class="gallery-overlay"><span class="gallery-label">Signature repousé collection</span></div>
+    </div>
+    <div class="gallery-item">
+      <!-- <img class="gallery-img" src="img2.jpg" alt="Copper panel"> -->
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Image 2</div>
+      <div class="gallery-overlay"><span class="gallery-label">Copper wall panel</span></div>
+    </div>
+    <div class="gallery-item">
+      <!-- <img class="gallery-img" src="img3.jpg" alt="Ritual vessel"> -->
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Image 3</div>
+      <div class="gallery-overlay"><span class="gallery-label">Ritual vessel</span></div>
+    </div>
+    <div class="gallery-item">
+      <!-- <img class="gallery-img" src="img4.jpg" alt="Brass deity"> -->
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Image 4</div>
+      <div class="gallery-overlay"><span class="gallery-label">Brass deity figure</span></div>
+    </div>
+    <div class="gallery-item">
+      <!-- <img class="gallery-img" src="img5.jpg" alt="Custom commission"> -->
+      <div class="gph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Image 5</div>
+      <div class="gallery-overlay"><span class="gallery-label">Custom commission</span></div>
+    </div>
+  </div>
+
+  <div class="gallery-hint">
+    To add your photos: in the HTML file, find each <code>&lt;!-- &lt;img ...&gt; --&gt;</code> comment, remove the <code>&lt;!--</code> and <code>--&gt;</code>, and set the correct <code>src="filename.jpg"</code>. Place image files in the same folder as this HTML file.
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Commission a piece<br>or <em>say hello</em></h2>
+      <div class="divider"></div>
+      <p class="contact-text">
+        Whether you are looking for a bespoke repousé commission, a trade partnership, or want to visit the workshop in Patan — I'd love to hear from you. Mane House ships internationally.
+      </p>
+      <ul class="contact-info-list">
+        <li class="contact-info-item">
+          <span class="cil">Studio</span>
+          <span class="civ">Patan Durbar Square area,<br>Lalitpur, Nepal</span>
+        </li>
+        <li class="contact-info-item">
+          <span class="cil">Company</span>
+          <span class="civ">Mane House · Reg. 1999</span>
+        </li>
+        <li class="contact-info-item">
+          <span class="cil">Email</span>
+          <span class="civ"><a href="mailto:hello@manehouse.np">hello@manehouse.np</a></span>
+        </li>
+        <li class="contact-info-item">
+          <span class="cil">Phone</span>
+          <span class="civ"><a href="tel:+9779800000000">+977 98-XXXX-XXXX</a></span>
+        </li>
+        <li class="contact-info-item">
+          <span class="cil">Hours</span>
+          <span class="civ">Sun–Fri, 10am – 6pm NPT</span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="form-group">
+        <label class="form-label" for="name">Your name</label>
+        <input type="text" id="name" class="form-input" placeholder="e.g. Sarah Johnson">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Email address</label>
+        <input type="email" id="email" class="form-input" placeholder="you@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="subject">Enquiry type</label>
+        <input type="text" id="subject" class="form-input" placeholder="e.g. Custom repousé commission">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Message</label>
+        <textarea id="message" class="form-textarea" placeholder="Tell me about your project, preferred size, motif, or any questions..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">Send message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-brand-name">Mane House</div>
+    <div class="footer-brand-sub">Repousé artisans · Patan, Nepal · Est. 1999</div>
+  </div>
+  <div class="footer-copy">© 2025 Bishesh Tamrakar · All rights reserved</div>
+</footer>
+
+<script>
+function openMobileMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleSubmit() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+  alert('Thank you, ' + name + '! Bishesh will be in touch soon from Mane House.');
+}
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.borderBottomColor = window.scrollY > 40 ? 'rgba(139,110,90,0.3)' : '';
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) closeMobileMenu();
+});
+</script>
+</body>
+</html>
