@@ -51,19 +51,25 @@
     justify-content: space-between;
     height: 62px;
   }
-
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--ink);
-    letter-spacing: 0.02em;
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
+    color: var(--ink);
+}
+
+.nav-logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.nav-logo-text {
     display: flex;
     flex-direction: column;
     line-height: 1.1;
-  }
-
+}
   .nav-logo span {
     font-size: 10px;
     font-family: var(--sans);
@@ -859,6 +865,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
+    <img src="img/logo.png" alt="Mane House logo" width="50" height="50">
     Mane House
     <span>Est. 1999 · Patan, Nepal</span>
   </a>
@@ -868,10 +875,13 @@
     <li><a href="#projects">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  
   <button class="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+
 
 <!-- HERO -->
 <section class="hero" id="home">
